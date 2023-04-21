@@ -14,10 +14,10 @@ dateFormat = "2 January 2006"
 
 [author]
    name = "Tony Tran"
-   image = "img/blowfish_logo.png"
-#   headline = "I'm only human"
-#   bio = "A little bit about you"
-#   links = [
+#   image = "img/blowfish_logo.png"
+  # headline = "Machine Learning Engineer"
+   bio = "Newly cognizant of the importance of [personal branding](https://rachel.fast.ai/posts/2017-12-18-personal-brand/index.html)"
+   links = [
      { email = "mailto:ttran@fastmail.com" },
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
@@ -38,7 +38,7 @@ dateFormat = "2 January 2006"
 #     { keybase = "https://keybase.io/username" },
 #     { kickstarter = "https://www.kickstarter.com/profile/username" },
 #     { lastfm = "https://lastfm.com/user/username" },
-#     { linkedin = "https://linkedin.com/in/username" },
+     { linkedin = "https://linkedin.com/in/tonytran-5" },
 #     { mastodon = "https://mastodon.instance/@username" },
 #     { medium = "https://medium.com/username" },
 #     { microsoft = "https://www.microsoft.com/" },
@@ -60,4 +60,4 @@ dateFormat = "2 January 2006"
 #     { whatsapp = "https://wa.me/phone-number" },
 #     { youtube = "https://youtube.com/username" },
 #     { ko-fi = "https://ko-fi.com/username" },
-#   ]
+   ]

@@ -1,9 +1,8 @@
 ---
 title: "Quarto Basics"
 format: hugo-md
-  html:
-    code-fold: true
 jupyter: python3
+date: 2023-04-21
 ---
 
 ```{python}
