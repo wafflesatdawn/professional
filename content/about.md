@@ -3,6 +3,7 @@ title: "About"
 date: 2023-04-21T08:44:12-07:00
 draft: true
 ---
+todo: add resume
 
 Experience
 -----------

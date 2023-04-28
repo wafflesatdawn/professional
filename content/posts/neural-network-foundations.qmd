@@ -1,0 +1,70 @@
+---
+title: "Neural Networks: How and Where"
+date: 2023-04-01T15:58:34-07:00
+format: hugo-md
+jupyter: python3
+draft: true
+---
+What is a neural network and how does it work? In this post I want to briefly describe the mathematical basis for how they function. These are notes taken from Fastai's course for deep learning.
+
+## How do you fit a function to data? Calculus
+The mathematical basis for machine learning is analogous to finding the best-fit line that goes though all of your data. Or put another way, how do you fit a function to data?
+
+```{python}
+#| label: fig-quadratic
+#| fig-cap: "The quintessential graph from algebra 1"
+
+import numpy as np
+import matplotlib.pyplot as plt
+
+a,b,c = [1,2,3]
+y = ax^2+bx+c
+fig, ax = plt.subplots()
+ax.plot(theta)
+ax.grid(True)
+plt.show()
+```
+
+In the video lesson, there's a quadratic equation and randomly generated data. By first specifying the general form of a quadratic, $$ax^2+bx+c$$ , you can start testing inputs of random arrangements for a,b,c. In Jupyter notebooks, there's even a useful interactive slider that can be attached by specifying @interact, which moves the plotted line in a graph. Moving the slides is equivalent to changing the values of abc and the exercise is basically 'eyeballing it'.
+However, the graph can be produced with a **loss function** that shows a number representing how incorrect the line is. Eg: *mean squared error*, one of the most simple and common ones. Finally, this process can be automated by using calculus: *derivatives* are functions that tell you the direction (increase or decrease) and magnitude of change caused by changing a value. The derivative output is called the **gradient**.
+## What do you call automating the process? Gradient descent
+Trained models are formatted as nested dictionaries. As you navigate the structure of stems, stages, and layers, you notice long arrays of floats.
+Tensors are like ndarrays or dataframes, except with the ability to go into n-dimensions. (Jargon: rank instead of dimension.) If specified to do so, tensors can calculate gradients and store the result as an attribute. This forms the foundational iterative loop that machine learning is built on--fastai included: for each iteration, use the calculated gradients to modify the inputs with the objective of decreasing the loss. The process of using this is called **optimization** and the justification for doing so is called **gradient descent**.
+Multiplying the gradients by such a small number (0.01) is chosen because a lot of the times, the optimal function resembles a quadratic, which has a dramatic slope at each end and gentler slope towards the center. If a large number is chosen right at the start, then the next result will overshoot. Choosing a small number leads toward the correct answer. This number is called the **learning rate**, an example of a **hyperparameter**.
+## How do you pull a function definition out of thin air? Brute force
+To get the final piece of machine learning, defining a function for the data, a concept called **rectilinear function** is used, which starts with the elementary y = mx + b and modifies it to return 0 if y is less than 0. If values for m and b are changed, part of the resulting line changes shape while the rest is static. Two rectilinear functions can be added together, and if the values for mb for both functions are modified, the resulting line starts to look like a quadratic. Rectilinear functions can be strung together to arbitrary complexity and achieve any number of curves--any squiggly line. Add additional dimensions and the outputs are no longer constrained to lines.
+Matrix multiplication is a shortcut for combining many rectilinear functions. According to the instructor, this is as much math that will ever be needed for machine learning.
+I wonder if the matrix multiplication shortcut was discovered by--no, it's so basic it would have been available for bayesians sooner or later. Despite the availability, the problem was the sheer quantity of matrix multiplication.
+
+## Book notes (2020)
+Pytorch and numpy are very similar in their objectives, apis, syntax, and functionality. The major difference is gpu processing support found in pytorch. Tensors come from pytorch; they cannot be 'jagged', meaning having dimensions of different length, and all data must be the same type.
+When mathematical operations are applied to tensors of different shapes, the smaller one is **broadcasted** to match the bigger one, and this allows comparison of a tensor representing a training target with the results. In particular, boolean values can be cast into numbers, which makes it possible to create a training *accuracy metric*.
+The application of machine learning weights
+In image classification, every pixel in an image can be assigned probabilities of whether it will match a result. For example, a pixel in the lower right corner probably won't be part of the figure '7' so it gets a low weight, but not for an '8', so that one gets a high weight.
+Because image classification can be assessing a myriad number of things at once, representing weights as functions is very convenient. To do so, both the image and weights are squished into vectors and multiplied:
+```python
+			  def pr_eight(x,w): return (x*w).sum()
+```
+That function can be converted into a ML process using these steps
+*Initialize* the weights.
+				   For each image, use these weights to *predict* whether it appears to be a 3 or a 7.  
+				   Based on these predictions, calculate how good the model is (its *loss*).  
+				   Calculate the *gradient*, which measures for each weight, how changing that weight would change the loss  
+				   *Step* (that is, change) all the weights based on that calculation.  
+				   Go back to the step 2, and *repeat* the process.  
+				   Iterate until you decide to *stop* the training process (for instance, because the model is good enough)  
+Along with weights, we have bias. Bias is the constant that gets added to weights. Is the b in $$y = mx + b$$
+Loss function vs metric for model
+Although accuracy is a good metric for human assessment of a model's performance, it makes a poor loss function for machine learning: Changing the weights by the learning rate usually does not change predictions, which means the accuracy ends up the same. A more sensitive function is required, one that expects inputs from 0-1 (predictions) and 0 or 1 (boolean).
+```python
+			  def mnist_loss(predictions, targets):
+			      predictions = predictions.sigmoid()
+			      return torch.where(targets==1, 1-predictions, predictions).mean()
+```
+Matrix multiplication in Python uses the @ operator
+Sigmoid functions, which always return a value between 0 and 1, are very important for machine learning
+How much data should the loss function take? Machine learning optimization and iteration
+Entire datasets take too much time and single data points are worthless, meaning that you want to use 'mini-batches': calculating loss average for several at a time. The choice of batch size becomes very important in training models.
+Variation in each batch is also important to improving model performance, for the same reason that **data augmentation** is good.
+The pytorch and fastai `DataLoader` class does mini-batch housekeeping for us. They take `Datasets`, which are tensors representing independent and dependent variables. `DataLoader` will return tuples of tensors.
+The universal approximation theorem says that a single activation function (aka nonlinearity) plus two linear layers is enough to approximate any function. Researchers from the 1990s were so focused on this that they did not consider other approaches even when they ran into limits of computer hardware. The rebirth of deep learning using neural nets eschews their approach in favor of many layers and smaller matrices.
