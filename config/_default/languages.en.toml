@@ -5,7 +5,7 @@ isoCode = "en"
 weight = 1
 rtl = false
 
-title = "Working Title"
+title = "liminal transubstantiation"
 # logo = "img/logo.png"
 # description = "My awesome website"
 # copyright = "Copy, _right?_ :thinking_face:"
@@ -15,10 +15,10 @@ dateFormat = "2 January 2006"
 [author]
    name = "Tony Tran"
 #   image = "img/blowfish_logo.png"
-  # headline = "Machine Learning Engineer"
-   bio = "Newly cognizant of the importance of [personal branding](https://rachel.fast.ai/posts/2017-12-18-personal-brand/index.html)"
+#   headline = "A small blog about machine learning, ai, and associated topics."
+#   bio = "Bio goes here"
    links = [
-     { email = "mailto:ttran@fastmail.com" },
+#     { email = "mailto:ttran@fastmail.com" },
 #     { link = "https://link-to-some-website.com/" },
 #     { amazon = "https://www.amazon.com/hz/wishlist/ls/wishlist-id" },
 #     { apple = "https://www.apple.com" },
