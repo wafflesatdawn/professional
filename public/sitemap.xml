@@ -7,12 +7,20 @@
     
   
     
+      <url>
+            <loc>http://ttran.fastmail.com/</loc>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
   
     
   
     
       <url>
-            <loc>http://ttran.fastmail.com/</loc>
+            <loc>http://ttran.fastmail.com/resume/</loc>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
           </url>

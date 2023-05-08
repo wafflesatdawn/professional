@@ -11,7 +11,7 @@ import sys
 print(sys.executable)
 ```
 
-    C:\Users\Welp Windows 10\AppData\Local\Programs\Python\Python311\pythonw.exe
+    C:\Users\Welp Windows 10\AppData\Local\Programs\Python\Python311\python.exe
 
 For a demonstration of a line plot on a polar axis, see [Figure 1](#fig-polar).
 
