@@ -2,7 +2,11 @@
 title: "katex is trash and always will be trash"
 date: 2023-05-05T16:16:53-07:00
 draft: true
+format: hugo-md
+jupyter: python3
 ---
+
+text
 {{< katex >}}
 inline `\\( ax^2 + bx \\)`{=markdown}
 

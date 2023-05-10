@@ -3,7 +3,7 @@ title: "Tensor Refresher"
 date: 2023-03-01T20:18:09-07:00
 format: hugo-md
 jupyter: python3
-draft: false
+draft: true
 ---
 
 ## Intro
