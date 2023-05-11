@@ -8,7 +8,7 @@ draft: true
 
 Intro about predicting blueberry harvest.
 
-Set up data
+# Set up data
 ```{python}
 from pathlib import Path
 from pandas.api.types import is_string_dtype, is_numeric_dtype, is_categorical_dtype
@@ -24,7 +24,7 @@ df_test = pd.read_csv(data_path/'test.csv', low_memory=False)
 df
 ```
 
-EDA
+# Data prep
 ```{python}
 df.columns
 df_test.columns
@@ -56,7 +56,6 @@ splits = (list(train_idx), list(df.index[~train_idx]))
 
 ```
 
-
 Tell TabularPandas which columns are continuous and categorical. Save the processed data for later use.
 ```{python}
 cont,cat = cont_cat_split(df, 1, dep_var=dep_var)
@@ -65,7 +64,7 @@ to.show(3)
 save_pickle(data_path/'to.pkl',to)
 ```
 
-Decision tree
+# Creating decision trees
 First define x and y, the independent and dependent variables. Then create the decision tree.
 ```{python}
 to = load_pickle(data_path/'to.pkl')
@@ -75,6 +74,7 @@ m = DecisionTreeRegressor(max_leaf_nodes=4)
 m.fit(trn_xs, trn_y);
 ```
 
+## Visualization
 This function visualizes the decision tree for the training x data that's been passed to the tabularpandas. The first node is before anything has been done. The value is the mean of the variable we're trying to predict, yield, and the sample is the length of the dataframe.
 ```{python}
 import graphviz
@@ -102,6 +102,7 @@ m = DecisionTreeRegressor()
 m.fit(trn_xs, trn_y);
 ```
 
+# Model performance evaluation
 The Kaggle competition that this data was taken from will evaluate models based on mean absolute error
 
 {{< katex >}}
@@ -110,8 +111,17 @@ The Kaggle competition that this data was taken from will evaluate models based 
 where each `\\( x_i \\)`{=markdown} represents the predicted target, `\\( y_i \\)`{=markdown}  represents the ground truth, and `\\( n \\)`{=markdown} is the number of rows in the test set.
 
 ```{python}
-def mae(x, y):
-    return abs(y - x).sum() / len(x)
+def mae(predictions, actuals):
+    """calculate the mean absolute error between prediction and actual values
+
+    Args:
+        predictions (Series): from training set
+        actuals (Series): from validation set
+
+    Returns:
+        _type_: float
+    """
+    return abs(predictions - actuals).sum() / len(predictions)
 ```
 Generating our predictions from the model and taking the MAE:
 ```{python}
@@ -131,8 +141,79 @@ m.get_n_leaves(), len(trn_xs)
 Changing it to 25 modes will fix the problem, bringing the MAE closer to the validation set.
 ```{python}
 m = DecisionTreeRegressor(min_samples_leaf=25)
-m.fit(to.train.xs, to.train.y)
-mae(m.predict(to.train.xs), to.train.y)
+m.fit(trn_xs, trn_y)
+mae(m.predict(trn_xs), trn_y)
+mae(m.predict(trn_xs), trn_y)
 ```
 
-Decision trees offer a balance of generalization and accuracy, but they are on opposite ends of a fulcrum. Limiting the size of the tree means it generalizes well at the expense of accuracy and vice versa.
+# Tree becomes forest
+Decision trees offer a balance of generalization and accuracy, but they are on opposite ends of a fulcrum. Limiting the size of the tree means it generalizes well at the expense of accuracy and vice versa. To overcome this compromise, data scientists started using a new technique called random forests, extending the analogy. The intuition behind random forests echoes the central limit theorem: an aggregated measure derived from several samples is more accurate than any of the individual samples. However, random forests has specific criteria
+- subset and bootstrap data from the training set
+- randomly use different subsets of columns when choosing splits in each decision tree
+
+Creating a random forest will be similar to the decision trees from earlier
+```{python}
+def rf(xs, y, n_estimators=40, max_samples=2000, max_features=0.5, min_samples_leaf=5, **kwargs):
+    """generate a random forest
+
+    Args:
+        xs (DataFrame): independent variables
+        y (Series): dependent variable
+        n_estimators (int, optional): number of trees. Defaults to 40.
+        max_samples (_type_, optional): rows to sample for training each tree. Defaults to 2000.
+        max_features (float, optional): number of features to consider when looking for the best split. Defaults to 0.5, meaning half.
+        min_samples_leaf (int, optional): minimum number of samples in each leaf. Defaults to 5.
+
+    Returns:
+        _type_: _description_
+    """
+    return RandomForestRegressor(n_jobs=-1, n_estimators=n_estimators,
+        max_samples=max_samples, max_features=max_features,
+        min_samples_leaf=min_samples_leaf, oob_score=True).fit(xs, y)
+```
+
+Comparing the training results to the validation set, MAE using random forest gains a slight improvement over the single large decision tree
+```{python}
+m = rf(trn_xs, trn_y)
+mae(m.predict(trn_xs), trn_y), mae(m.predict(valid_xs), valid_y)
+```
+
+The random forest we created created has 40 trees, each of which was can be accessed by indexing from `m.estimators_`, which returns a list of all the predicted yields
+```{python}
+m.estimators_[3].predict(valid_xs)
+```
+Numpy's `stack` method allows for easy manipulations of arrays, quickly moving values from one to another as seen its documentation examples:
+```python
+>>> arrays = [np.random.randn(3, 4) for _ in range(10)]
+>>> np.stack(arrays, axis=0).shape
+(10, 3, 4)
+>>> np.stack(arrays, axis=1).shape
+(3, 10, 4)
+>>> np.stack(arrays, axis=2).shape
+(3, 4, 10)
+>>> a = np.array([1, 2, 3])
+>>> b = np.array([4, 5, 6])
+>>> np.stack((a, b))
+array([[1, 2, 3],
+       [4, 5, 6]])
+>>> np.stack((a, b), axis=-1)
+array([[1, 4],
+       [2, 5],
+       [3, 6]])
+```
+The resulting output from `stack` is another numpy array, giving us access to the mean method. Usually taking the mean of an array reduces the dimensions and returns just a scalar. However, passing an optional argument will instead take the mean along either axis.
+```{python}
+preds = np.stack([t.predict(valid_xs) for t in m.estimators_])
+print(preds.mean())
+print(preds.mean(0))
+print(preds.mean(1))
+assert len(trn_xs) == len(preds.mean(0))
+```
+Using this gives back the predicted yields for each decision tree (axis 1) or the entire dataset (axis 0), which will return the same MAE from as earlier
+```{python}
+mae(preds.mean(0), valid_y)
+```
+This can then be used to plot how the MAE changes as more decision trees get added, starting from 0 all the way to 40, the maximun number we specified.
+```{python}
+plt.plot([mae(preds[:i+1].mean(0), valid_y) for i in range(40)])
+```
