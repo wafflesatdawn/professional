@@ -6,8 +6,8 @@ showWordCount: false
 ---
 Summary
 -------
-Engineer and analyst with 10 years of experience in software development, cloud infrastructure, ETL, databases, automation, project management, and data visualization. </br>
-Proven adaptability and effective communicator with nontechnical audiences. Lifelong learner with a collaborative mindset, committed to developing skills and helping colleagues thrive.
+Data analyst and engineer with 10 years of broad technical experience: software development, cloud infrastructure, ETL, databases, automation, project management, and data visualization. </br>
+Proven adaptability, effective communicator with nontechnical audiences, and believer in principled decision-making.
 
 Experience
 -----------
@@ -15,17 +15,15 @@ Experience
 
 {{< timelineItem icon=none header="Process/Data Engineer" badge="Oct '20 - Aug '22" subheader="Kite Pharma" >}}
 
-Enhanced manufacturing workflows by developing a custom Javascript app tailored to cell ther-
-apy needs. Collaborated with IT to connect new data sources, migrate data between Cloudera/
-AWS, and deploy solutions. Managed complex timelines and coordinated activities among dis-
-parate groups to successfully drive global projects. </br>
-Highlights: drafted 2 project charters for annual budget, improved data integrity, ensured suc-
-cessful implementation of datalake enhancements, and resolved critical compliance risks.
+Enhanced manufacturing workflows by developing a custom Javascript app tailored to cell therapy needs. Collaborated with IT to connect new data sources, migrate data between Cloudera/AWS, and deploy solutions. Managed complex timelines and coordinated activities among disparate groups to successfully drive global projects.
+</br>
+Highlights: drafted 2 project charters for annual budget, improved data integrity, ensured successful implementation of datalake enhancements, and resolved critical compliance risks.
 {{< /timelineItem >}}
 
-{{< timelineItem icon=none header="Data Analyst Engineer" badge="Jul '19 - Jul '22" subheader="Mega International" >}}
+{{< timelineItem icon=none header="Data Analyst Engineer" badge="Jul '19 - Jul '20" subheader="Regent LP" >}}
 
-Facilitated acquisitions by migrating data & creating data pipelines to shared corporate infrastructure in Snowflake. Moved business units from legacy reporting systems to Looker, recreating data models and dashboards.</br>
+Facilitated acquisitions by migrating data & creating data pipelines to shared corporate infrastructure in Snowflake. Moved business units from legacy reporting systems to Looker, recreating data models and dashboards.
+</br>
 Highlights: ensured data integrity for 10+ historical metrics, reduced dashboard load times by 2 minutes, and automated daily transfer of data.
 {{< /timelineItem >}}
 
@@ -47,7 +45,6 @@ Skills
 Python
 JavaScript
 Powershell
-Clojure
 T-SQL
 MySQL
 Pandas
