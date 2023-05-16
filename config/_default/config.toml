@@ -34,5 +34,9 @@ buildFuture = false
 [outputs]
   home = ["HTML", "RSS", "JSON"]
 
-# for quarto integration
-ignoreFiles = [ "\\.qmd$", "\\.ipynb$", "\\.py$" ]
+# for quarto integration and not copying data
+[module]
+[[module.mounts]]
+  source = 'content'
+  target = 'content'
+  excludeFiles = ['posts/**/data/*', "\\.qmd$", "\\.ipynb$", "\\.py$"]
