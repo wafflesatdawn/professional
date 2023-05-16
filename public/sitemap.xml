@@ -3,15 +3,61 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
     
-  
+      <url>
+            <loc>http://ttran.fastmail.com/</loc>
+            <lastmod>2023-05-08T10:05:27-07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
     
   
     
       <url>
-            <loc>http://ttran.fastmail.com/</loc>
+            <loc>http://ttran.fastmail.com/posts/blueberry-yield/</loc>
+            <lastmod>2023-05-08T10:05:27-07:00</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
           </url>
+    
+  
+    
+      <url>
+            <loc>http://ttran.fastmail.com/posts/dataset-memory-compression/</loc>
+            <lastmod>2023-05-03T17:57:07-07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://ttran.fastmail.com/posts/collaborative-filtering/</loc>
+            <lastmod>2023-04-28T08:39:56-07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://ttran.fastmail.com/posts/</loc>
+            <lastmod>2023-04-21T08:43:09-07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>http://ttran.fastmail.com/posts/tensor-refresher/</loc>
+            <lastmod>2023-04-11T20:18:09-07:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+  
     
   
     

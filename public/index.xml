@@ -1,18 +1,59 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>liminal transubstantiation</title>
+    <title>luminal transubstantiation</title>
     <link>http://ttran.fastmail.com/</link>
-    <description>Recent content on liminal transubstantiation</description>
+    <description>Recent content on luminal transubstantiation</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="http://ttran.fastmail.com/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language>
+    <lastBuildDate>Mon, 08 May 2023 10:05:27 -0700</lastBuildDate><atom:link href="http://ttran.fastmail.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Tabular modeling with Kaggle: predicting blueberry harvest yield</title>
+      <link>http://ttran.fastmail.com/posts/blueberry-yield/</link>
+      <pubDate>Mon, 08 May 2023 10:05:27 -0700</pubDate>
+      
+      <guid>http://ttran.fastmail.com/posts/blueberry-yield/</guid>
+      <description>A recent Kaggle competition was launched that asks users to predict harvest yields from wild blueberries growing in the hills and mountains of the Northeast.</description>
+      
+    </item>
+    
+    <item>
+      <title>Memory compression for large datasets</title>
+      <link>http://ttran.fastmail.com/posts/dataset-memory-compression/</link>
+      <pubDate>Wed, 03 May 2023 17:57:07 -0700</pubDate>
+      
+      <guid>http://ttran.fastmail.com/posts/dataset-memory-compression/</guid>
+      <description>Pandas gains great speed from loading everything into RAM but it comes with the obvious constraint of how much has been installed.</description>
+      
+    </item>
+    
+    <item>
+      <title>Recommendation systems: exploring collaborative filtering with boardgame ratings</title>
+      <link>http://ttran.fastmail.com/posts/collaborative-filtering/</link>
+      <pubDate>Fri, 28 Apr 2023 08:39:56 -0700</pubDate>
+      
+      <guid>http://ttran.fastmail.com/posts/collaborative-filtering/</guid>
+      <description>Recommendation systems are one of the applications of machine learning that have become so embedded in daily life that it can be surprising to consider them as even related to machine learning.</description>
+      
+    </item>
+    
+    <item>
+      <title>Tensor Refresher</title>
+      <link>http://ttran.fastmail.com/posts/tensor-refresher/</link>
+      <pubDate>Tue, 11 Apr 2023 20:18:09 -0700</pubDate>
+      
+      <guid>http://ttran.fastmail.com/posts/tensor-refresher/</guid>
+      <description>Intro # Tensors are the foundational building blocks of machine learning and their nuances are worth spending some time on.</description>
+      
+    </item>
+    
     <item>
       <title>Tony Tran</title>
       <link>http://ttran.fastmail.com/resume/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>http://ttran.fastmail.com/resume/</guid>
-      <description>Summary # Engineer and analyst with 10 years of experience in software development, cloud infrastructure, ETL, databases, automation, project management, and data visualization.</description>
+      <description>Summary # Data analyst and engineer with 10 years of broad technical experience: software development, cloud infrastructure, ETL, databases, automation, project management, and data visualization.</description>
       
     </item>
     

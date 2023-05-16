@@ -1,9 +1,9 @@
 ---
 title: "Tensor Refresher"
-date: 2023-03-01T20:18:09-07:00
+date: 2023-04-11T20:18:09-07:00
 format: hugo-md
 jupyter: python3
-draft: true
+draft: false
 ---
 
 ## Intro
@@ -22,9 +22,9 @@ print(x)
 ```
 
     <class 'torch.Tensor'>
-    tensor([[-1.7006e+03,  8.1556e-43, -1.6574e+03,  8.1556e-43],
-            [-2.9176e+03,  8.1556e-43, -1.7958e+03,  8.1556e-43],
-            [-2.5965e+33,  0.0000e+00,  1.4013e-45,  0.0000e+00]])
+    tensor([[0., 0., 0., 0.],
+            [0., 0., 0., 0.],
+            [0., 0., 0., 0.]])
 
 To start off, the [pytorch docs](https://pytorch.org/tutorials/beginner/introyt/tensors_deeper_tutorial.html) include a great primer that begins by initializing a tensor just like the one above:
 \> Let's unpack what we just did:
@@ -82,7 +82,7 @@ TypeError: rand(): argument 'size' must be tuple of ints, but found element of t
 
 ### Going beyond 3d
 
-Higher dimensionality is difficult to visualize and often invites people to start drawing volumes and hypercubes. It's simply a consequence of 'dimension' in common usage as well as a sign of how far the cartesian system has permeated. How do you think beyond 3D? We can go 'back to 2D', in a sense. Forget about trying to imagine the data in shapes, connecting lines between them, and instead consider tensor dimensionaliy simply as arrays of arrays (or lists of lists).
+Higher dimensionality is difficult to visualize and often invites people to start drawing volumes and hypercubes--a consequence of 'dimension' in common usage as well as a sign of how far the cartesian system has permeated. How do you think beyond 3D? We can go 'back to 2D', in a sense. Forget about trying to imagine the data in shapes, connecting lines between them, and instead consider tensor dimensionaliy simply as arrays of arrays (or lists of lists).
 
 Observe how the output grows when we create tensors of increasing size:
 
@@ -120,7 +120,7 @@ torch.ones(2,2,2,2)
              [[1., 1.],
               [1., 1.]]]])
 
-There are a couple of ways to read the pattern that emerges from playing around with this. These examples kept all the arguments identical but modifying the last one makes it clearer:
+Each additional number passed to `torch.ones` is an additional dimension, so we're currently at 4 dimensions. There are a few things to note from the pattern that emerges from playing around with this. These examples kept all the arguments identical but modifying the last one makes it clearer:
 
 ``` python
 torch.ones(2,3,1,5)
@@ -139,152 +139,20 @@ torch.ones(2,3,1,5)
 
              [[1., 1., 1., 1., 1.]]]])
 
-The last number determines the size of the innermost elements of the tensor (here, 5) while the first number determines the number of groups at the highest level. So, if set to 1,
+-   the first number determines the number of groups at the highest level
+-   the last number determines the size of the innermost elements of the tensor (here, 5)
+-   this is the same as how long each printed line is in the output
+-   for each number between the first and the last, groups are recursively nested
+    <!-- 
+    ## Operations with tensors
+    As seen above, it's not possible to perform operations on tensors when they have different shapes. "Shape" means having the same number of dimensions and the same number of items in each dimension. For example, these two are not the same shape:
 
-Higher dimension tensors have additional
-Tensors of rank 2 and 3 are old hat--it's easy to see how the 9 numbers have become 27: . Rank 4 is where it starts to get hairy.
-
-``` python
-torch.ones(5)
-```
-
-    tensor([1., 1., 1., 1., 1.])
-
-``` python
-torch.ones(5,4)
-```
-
-    tensor([[1., 1., 1., 1.],
-            [1., 1., 1., 1.],
-            [1., 1., 1., 1.],
-            [1., 1., 1., 1.],
-            [1., 1., 1., 1.]])
-
-``` python
-torch.ones(5,4,3)
-```
-
-    tensor([[[1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.]],
-
-            [[1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.]],
-
-            [[1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.]],
-
-            [[1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.]],
-
-            [[1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.],
-             [1., 1., 1.]]])
-
-``` python
-torch.ones(5,4,3,2)
-```
-
-    tensor([[[[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]]],
+    ::: {.cell execution_count=8}
+    ``` {.python .cell-code}
+    # tensor(1,2) - tensor(2,1)
+    ```
+    :::
 
 
-            [[[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]]],
-
-
-            [[[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]]],
-
-
-            [[[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]]],
-
-
-            [[[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]],
-
-             [[1., 1.],
-              [1., 1.],
-              [1., 1.]]]])
-
-There are a couple of patterns we can see at this point, and they come from different directions. First, obviously, the output in the terminal is growing longer. But at the same time, parts of it seem to be shrinking.
-
-## Operations with tensors
-
-As seen above, it's not possible to perform operations on tensors when they have different shapes. "Shape" means having the same number of dimensions and the same number of items in each dimension. For example, these two are not the same shape:
-
-``` python
-# tensor(1,2) - tensor(2,1)
-```
-
-### Element access
+    ### Element access
+     -->

@@ -1,7 +1,7 @@
 ---
-title: "Dataset Memory Compression"
-date: 2023-05-08T17:57:07-07:00
-draft: true
+title: "Memory compression for large datasets"
+date: 2023-05-03T17:57:07-07:00
+draft: false
 ---
 Pandas gains great speed from loading everything into RAM but it comes with the obvious constraint of how much has been installed. Over on Kaggle, a user who faces such a constraint has [claimed to reduce his memory consumption by 70%](https://www.kaggle.com/code/nickycan/compress-70-of-dataset/notebook) using simple datatype conversion based on the largest and smallest numbers in each of the columns.
 

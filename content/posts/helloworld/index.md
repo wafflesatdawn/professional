@@ -1,9 +1,9 @@
 ---
 title: "Quarto Basics"
-format: hugo-md
-jupyter: python3
 date: 2023-04-21
 draft: true
+format: hugo-md
+jupyter: python3
 ---
 
 ``` python
