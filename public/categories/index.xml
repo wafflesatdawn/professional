@@ -2,9 +2,9 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Categories on luminal transubstantiation</title>
-    <link>http://ttran.fastmail.com/categories/</link>
+    <link>https://wafflesatdawn.github.io/professional/categories/</link>
     <description>Recent content in Categories on luminal transubstantiation</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en</language><atom:link href="http://ttran.fastmail.com/categories/index.xml" rel="self" type="application/rss+xml" />
+    <language>en</language><atom:link href="https://wafflesatdawn.github.io/professional/categories/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
