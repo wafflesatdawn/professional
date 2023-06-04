@@ -6,7 +6,17 @@
     <description>Recent content on luminal transubstantiation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 08 May 2023 10:05:27 -0700</lastBuildDate><atom:link href="https://wafflesatdawn.github.io/professional/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Thu, 25 May 2023 16:46:13 -0100</lastBuildDate><atom:link href="https://wafflesatdawn.github.io/professional/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Multiprocessing errors in PyTorch</title>
+      <link>https://wafflesatdawn.github.io/professional/posts/pytorch-multiprocessing/</link>
+      <pubDate>Thu, 25 May 2023 16:46:13 -0100</pubDate>
+      
+      <guid>https://wafflesatdawn.github.io/professional/posts/pytorch-multiprocessing/</guid>
+      <description>An attempt has been made to start a new process before thecurrent process has finished its bootstrapping phase.</description>
+      
+    </item>
+    
     <item>
       <title>Tabular modeling with Kaggle: predicting blueberry harvest yield</title>
       <link>https://wafflesatdawn.github.io/professional/posts/blueberry-yield/</link>
@@ -53,7 +63,7 @@
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://wafflesatdawn.github.io/professional/resume/</guid>
-      <description>Summary # Data analyst and engineer with 10 years of broad technical experience: software development, cloud infrastructure, ETL, databases, automation, project management, and data visualization.</description>
+      <description>Summary # Data analyst and engineer with broad technical experience: software development, cloud infrastructure, ETL, databases, automation, project management, and data visualization.</description>
       
     </item>
     

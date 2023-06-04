@@ -196,7 +196,7 @@ Checking it against our validation set:
 mae(m.predict(valid_xs), valid_y)
 ```
 
-    267.3668955897554
+    280.6955310562753
 
 A mean absolute error of 0 indicates overfitting, as the default setting for sklearn is to continue splitting nodes until they run out. The total nodes, or leaves, in the tree is almost as high as the total rows in the training set:
 
@@ -204,7 +204,7 @@ A mean absolute error of 0 indicates overfitting, as the default setting for skl
 m.get_n_leaves(), len(trn_xs)
 ```
 
-    (7346, 10702)
+    (7345, 10702)
 
 Changing it to 25 modes will fix the problem, bringing the MAE closer to the validation set.
 
@@ -214,7 +214,7 @@ m.fit(trn_xs, trn_y)
 mae(m.predict(trn_xs), trn_y)
 ```
 
-    323.21402610989696
+    334.6532272376639
 
 ## Trees become forest
 
@@ -253,7 +253,7 @@ m = rf(trn_xs, trn_y)
 mae(m.predict(trn_xs), trn_y), mae(m.predict(valid_xs), valid_y)
 ```
 
-    (309.1868055637817, 341.3091030297672)
+    (320.97567434528906, 340.5833703323208)
 
 ## Further inspection of random forest performance
 
@@ -263,8 +263,8 @@ The random forest we created created has 40 trees, each of which was can be acce
 m.estimators_[3].predict(valid_xs)
 ```
 
-    array([4662.13269043, 4161.40205078, 3451.59905134, ..., 5439.28586155,
-           5566.04943848, 7025.54951172])
+    array([2630.4117296 , 4527.62113444, 5998.69013672, ..., 7808.58474392,
+           3219.02983398, 7891.09232955])
 
 Numpy's `stack` method allows for easy manipulations of arrays, quickly moving values from one to another as seen its documentation examples:
 
@@ -302,7 +302,7 @@ Using this gives back the predicted yields for each decision tree (axis 1) or th
 mae(preds.mean(0), valid_y)
 ```
 
-    341.3091030297672
+    340.5833703323208
 
 This can then be used to plot how the MAE exponentially improves as more decision trees get added, starting from 0 all the way to 40, the maximun number that we specified.
 
@@ -318,7 +318,7 @@ The model also offers `oob_prediction_`, which is like a miniature validation se
 mae(m.oob_prediction_, trn_y)
 ```
 
-    334.4666069531408
+    347.18101643052483
 
 ## Model interpretation
 
@@ -379,7 +379,7 @@ m = rf(trn_xs_imp, trn_y)
 mae(m.predict(trn_xs_imp), trn_y)
 ```
 
-    323.4433739666308
+    336.3376379828103
 
 MAE is slightly worse, but in a dataset with significantly more columns, we would have good reason to narrow our analysis of factors using the quantified importance as cutoff criteria. Here we will decide to keep the extra columns in exchange for the better score.
 
@@ -430,12 +430,139 @@ rf_feat_importance(m, combo)[:5]
 
 |     | cols      | imp      |
 |-----|-----------|----------|
-| 5   | id        | 0.203816 |
-| 14  | fruitset  | 0.181433 |
-| 15  | fruitmass | 0.178354 |
-| 16  | seeds     | 0.172282 |
-| 3   | andrena   | 0.052358 |
+| 5   | id        | 0.210471 |
+| 14  | fruitset  | 0.179450 |
+| 16  | seeds     | 0.171691 |
+| 15  | fruitmass | 0.169624 |
+| 4   | osmia     | 0.047923 |
 
 </div>
 
 We then look at the feature importance of the new model. For each feature, the higher the importance, the greater the disparity between validation and training datasets. In this case, there's not much of a discrepancy betweeen validation and training data, with the highest importance at 0.2. This result reflects the random splitting of the original data, but if it were structured differently, such as a time series, then random splitting would not have been the ideal choice, leading to greater chance of bigger discrepancies.
+
+## Deep learning version
+
+Now let's see what kind of MAE a neural network would produce. We need to take the same steps for data prep as with the tabular models
+
+``` python
+df_nn = pd.read_csv(data_path/'train.csv', low_memory=False)
+df_nn.clonesize = df_nn.clonesize.astype('category')
+df_nn.honeybee = df_nn.honeybee.astype('category')
+df_nn.bumbles = df_nn.bumbles.astype('category')
+df_nn.andrena = df_nn.andrena.astype('category')
+df_nn.osmia = df_nn.osmia.astype('category')
+cont_nn,cat_nn = cont_cat_split(df_nn, dep_var=dep_var)
+```
+
+Decision trees and random forests don't care about normalized data but neural networks definitely do. Additionally, we set the batch size pretty high to 1024 because memory consumption won't be very high with tabular data.
+
+``` python
+procs_nn = [Categorify, FillMissing, Normalize]
+to_nn = TabularPandas(df_nn, procs_nn, cat_nn, cont_nn,
+                      splits=splits, y_names=dep_var)
+dls = to_nn.dataloaders(102)
+```
+
+``` python
+y = to_nn.train.y
+y.min(),y.max()
+```
+
+    (1945.5306, 8969.401)
+
+We also set the y range close to the minimum and maximum observed values for y to initialize the `tabular_learner` with and find the best learning rate
+
+``` python
+y = to_nn.train.y
+y.min(),y.max()
+learn = tabular_learner(dls, y_range=(1900, 9000), n_out=1, loss_func=F.mse_loss)
+learn.lr_find()
+```
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+
+    SuggestedLRs(valley=0.0014454397605732083)
+
+<img src="index_files/figure-markdown_strict/cell-34-output-4.png" width="672" height="445" />
+
+Using a learning rate of \_\_\_, we get these training results
+
+``` python
+learn.fit_one_cycle(5, 1e-2)
+```
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+
+| epoch | train_loss    | valid_loss    | time  |
+|-------|---------------|---------------|-------|
+| 0     | 456718.531250 | 367541.812500 | 00:00 |
+| 1     | 389547.500000 | 367408.718750 | 00:00 |
+| 2     | 386598.062500 | 348744.312500 | 00:00 |
+| 3     | 351353.625000 | 326156.406250 | 00:00 |
+| 4     | 335319.843750 | 325005.437500 | 00:00 |
+
+And now we can calculate the MAE
+
+``` python
+preds, targets = learn.get_preds()
+mae(preds, targets)
+```
+
+<style>
+    /* Turns off some styling */
+    progress {
+        /* gets rid of default border in Firefox and Opera. */
+        border: none;
+        /* Needs to be in here for Safari polyfill so background images work as expected. */
+        background-size: auto;
+    }
+    progress:not([value]), progress:not([value])::-webkit-progress-bar {
+        background: repeating-linear-gradient(45deg, #7e7e7e, #7e7e7e 10px, #5c5c5c 10px, #5c5c5c 20px);
+    }
+    .progress-bar-interrupted, .progress-bar-interrupted::-webkit-progress-bar {
+        background: #F44336;
+    }
+</style>
+
+    tensor(365.4373)
+
+It's actually worse than the random forest, probably due to the tiny size of this dataset. Neural networks typically require large amounts of data to generalize well and learn complex patterns. That being said, since we expect the predictions from both models to be uncorrelated, it's worth checking to see if an ensemble of both would generate a better prediction than either. Even though the random forest is already an ensemble of decision trees, it can still feed in to yet another.
+
+To do so, we need to format the predictions returned by the neural network, removing the tensor unit axis, and converting to numpy array
+
+``` python
+rf_preds = m.predict(valid_xs)
+nn_preds = to_np(preds.squeeze())
+ens_preds = (nn_preds+rf_preds)/2
+mae(ens_preds, valid_y)
+```
+
+    3010.618897426144

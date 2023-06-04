@@ -5,7 +5,16 @@
     
       <url>
             <loc>https://wafflesatdawn.github.io/professional/</loc>
-            <lastmod>2023-05-08T10:05:27-07:00</lastmod>
+            <lastmod>2023-05-25T16:46:13-01:00</lastmod>
+            <changefreq>daily</changefreq>
+            <priority>0.5</priority>
+          </url>
+    
+  
+    
+      <url>
+            <loc>https://wafflesatdawn.github.io/professional/posts/pytorch-multiprocessing/</loc>
+            <lastmod>2023-05-25T16:46:13-01:00</lastmod>
             <changefreq>daily</changefreq>
             <priority>0.5</priority>
           </url>

@@ -293,3 +293,55 @@ m = rf(combo, is_valid)
 rf_feat_importance(m, combo)[:5]
 ```
 We then look at the feature importance of the new model. For each feature, the higher the importance, the greater the disparity between validation and training datasets. In this case, there's not much of a discrepancy betweeen validation and training data, with the highest importance at 0.2. This result reflects the random splitting of the original data, but if it were structured differently, such as a time series, then random splitting would not have been the ideal choice, leading to greater chance of bigger discrepancies.
+
+## Deep learning version
+Now let's see what kind of MAE a neural network would produce. We need to take the same steps for data prep as with the tabular models
+```{python}
+df_nn = pd.read_csv(data_path/'train.csv', low_memory=False)
+df_nn.clonesize = df_nn.clonesize.astype('category')
+df_nn.honeybee = df_nn.honeybee.astype('category')
+df_nn.bumbles = df_nn.bumbles.astype('category')
+df_nn.andrena = df_nn.andrena.astype('category')
+df_nn.osmia = df_nn.osmia.astype('category')
+cont_nn,cat_nn = cont_cat_split(df_nn, dep_var=dep_var)
+```
+
+Decision trees and random forests don't care about normalized data but neural networks definitely do. Additionally, we set the batch size pretty high to 1024 because memory consumption won't be very high with tabular data.
+```{python}
+procs_nn = [Categorify, FillMissing, Normalize]
+to_nn = TabularPandas(df_nn, procs_nn, cat_nn, cont_nn,
+                      splits=splits, y_names=dep_var)
+dls = to_nn.dataloaders(1024)
+```
+
+```{python}
+y = to_nn.train.y
+y.min(),y.max()
+```
+We also set the y range close to the minimum and maximum observed values for y to initialize the `tabular_learner` with and find the best learning rate
+```{python}
+y = to_nn.train.y
+y.min(),y.max()
+learn = tabular_learner(dls, y_range=(1900, 9000), n_out=1, loss_func=F.mse_loss)
+learn.lr_find()
+```
+Using a learning rate of ___, we get these training results
+```{python}
+learn.fit_one_cycle(5, 1e-2)
+```
+And now we can calculate the MAE
+```{python}
+preds, targets = learn.get_preds()
+mae(preds, targets)
+```
+It's actually worse than the random forest, most likely due to the tiny size of this dataset. Neural networks typically require large amounts of data to generalize well and learn complex patterns. That being said, since we expect the predictions from both models to be uncorrelated, it's worth checking to see if an ensemble of both would generate a better prediction than either. Even though the random forest is already an ensemble of decision trees, it can still feed in to yet another.
+
+To do so, we need to format the predictions returned by the neural network, removing the tensor unit axis, and converting to numpy array
+```{python}
+m = rf(trn_xs, trn_y)
+nn_preds = to_np(preds.squeeze())
+ens_preds = (nn_preds+ m.predict(trn_xs))/2
+mae(ens_preds, valid_y)
+```
+
+MAE is worse than ever! This is rather unfortunate 

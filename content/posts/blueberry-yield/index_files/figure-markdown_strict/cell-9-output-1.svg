@@ -5,106 +5,106 @@
  -->
 <!-- Title: Tree Pages: 1 -->
 <svg width="720pt" height="435pt"
- viewBox="0.00 0.00 720.00 434.78" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-<g id="graph0" class="graph" transform="scale(0.86747 0.86747) rotate(0) translate(4 497.2)">
+ viewBox="0.00 0.00 720.00 434.80" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="graph0" class="graph" transform="scale(0.873786 0.873786) rotate(0) translate(4 493.6)">
 <title>Tree</title>
-<polygon fill="white" stroke="none" points="-4,4 -4,-497.2 826,-497.2 826,4 -4,4"/>
+<polygon fill="white" stroke="none" points="-4,4 -4,-493.6 820,-493.6 820,4 -4,4"/>
 <!-- 0 -->
 <g id="node1" class="node">
 <title>0</title>
-<path fill="#f0b78e" stroke="black" d="M499,-463C499,-463 323,-463 323,-463 317,-463 311,-457 311,-451 311,-451 311,-407 311,-407 311,-401 317,-395 323,-395 323,-395 499,-395 499,-395 505,-395 511,-401 511,-407 511,-407 511,-451 511,-451 511,-457 505,-463 499,-463"/>
-<text text-anchor="start" x="371.5" y="-447.8" font-family="Helvetica,sans-Serif" font-size="14.00">fruitset ≤ 0.5</text>
-<text text-anchor="start" x="319" y="-432.8" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 1753129.37</text>
-<text text-anchor="start" x="355" y="-417.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 10702</text>
-<text text-anchor="start" x="359.5" y="-402.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = 6052.74</text>
+<path fill="#f0b78d" stroke="black" d="M498,-460C498,-460 322,-460 322,-460 316,-460 310,-454 310,-448 310,-448 310,-404 310,-404 310,-398 316,-392 322,-392 322,-392 498,-392 498,-392 504,-392 510,-398 510,-404 510,-404 510,-448 510,-448 510,-454 504,-460 498,-460"/>
+<text text-anchor="start" x="370.5" y="-444.8" font-family="Helvetica,sans-Serif" font-size="14.00">fruitset ≤ 0.5</text>
+<text text-anchor="start" x="318" y="-429.8" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 1807533.57</text>
+<text text-anchor="start" x="354" y="-414.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 10702</text>
+<text text-anchor="start" x="363" y="-399.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = 6043.3</text>
 </g>
 <!-- 1 -->
 <g id="node2" class="node">
 <title>1</title>
-<path fill="#f8dfcc" stroke="black" d="M386,-266C386,-266 226,-266 226,-266 220,-266 214,-260 214,-254 214,-254 214,-210 214,-210 214,-204 220,-198 226,-198 226,-198 386,-198 386,-198 392,-198 398,-204 398,-210 398,-210 398,-254 398,-254 398,-260 392,-266 386,-266"/>
-<text text-anchor="start" x="262.5" y="-250.8" font-family="Helvetica,sans-Serif" font-size="14.00">fruitset ≤ 0.44</text>
-<text text-anchor="start" x="222" y="-235.8" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 962451.0</text>
-<text text-anchor="start" x="254.5" y="-220.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 4973</text>
-<text text-anchor="start" x="254.5" y="-205.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = 4997.95</text>
+<path fill="#f8decb" stroke="black" d="M393,-265C393,-265 217,-265 217,-265 211,-265 205,-259 205,-253 205,-253 205,-209 205,-209 205,-203 211,-197 217,-197 217,-197 393,-197 393,-197 399,-197 405,-203 405,-209 405,-209 405,-253 405,-253 405,-259 399,-265 393,-265"/>
+<text text-anchor="start" x="261.5" y="-249.8" font-family="Helvetica,sans-Serif" font-size="14.00">fruitset ≤ 0.44</text>
+<text text-anchor="start" x="213" y="-234.8" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 1007496.61</text>
+<text text-anchor="start" x="253.5" y="-219.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 5055</text>
+<text text-anchor="start" x="253.5" y="-204.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = 4984.98</text>
 </g>
 <!-- 0&#45;&gt;1 -->
 <g id="edge1" class="edge">
 <title>0&#45;&gt;1</title>
-<path fill="none" stroke="black" d="M393.19,-394.92C375.54,-362.14 348.42,-311.79 329.12,-275.94"/>
-<polygon fill="black" stroke="black" points="332.44,-274.72 324.62,-267.57 326.28,-278.04 332.44,-274.72"/>
-<text text-anchor="middle" x="316.72" y="-286.49" font-family="Helvetica,sans-Serif" font-size="14.00">True</text>
+<path fill="none" stroke="black" d="M391.95,-391.82C374.45,-359.65 347.79,-310.66 328.61,-275.4"/>
+<polygon fill="black" stroke="black" points="331.74,-273.83 323.89,-266.72 325.59,-277.18 331.74,-273.83"/>
+<text text-anchor="middle" x="316.09" y="-285.67" font-family="Helvetica,sans-Serif" font-size="14.00">True</text>
 </g>
 <!-- 2 -->
 <g id="node5" class="node">
 <title>2</title>
-<path fill="#e99457" stroke="black" d="M600,-266C600,-266 432,-266 432,-266 426,-266 420,-260 420,-254 420,-254 420,-210 420,-210 420,-204 426,-198 432,-198 432,-198 600,-198 600,-198 606,-198 612,-204 612,-210 612,-210 612,-254 612,-254 612,-260 606,-266 600,-266"/>
-<text text-anchor="start" x="470" y="-250.8" font-family="Helvetica,sans-Serif" font-size="14.00">seeds ≤ 39.11</text>
-<text text-anchor="start" x="428" y="-235.8" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 635377.77</text>
-<text text-anchor="start" x="464.5" y="-220.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 5729</text>
-<text text-anchor="start" x="464.5" y="-205.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = 6968.34</text>
+<path fill="#e99356" stroke="black" d="M595,-265C595,-265 435,-265 435,-265 429,-265 423,-259 423,-253 423,-253 423,-209 423,-209 423,-203 429,-197 435,-197 435,-197 595,-197 595,-197 601,-197 607,-203 607,-209 607,-209 607,-253 607,-253 607,-259 601,-265 595,-265"/>
+<text text-anchor="start" x="473" y="-249.8" font-family="Helvetica,sans-Serif" font-size="14.00">seeds ≤ 39.1</text>
+<text text-anchor="start" x="431" y="-234.8" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 623556.9</text>
+<text text-anchor="start" x="463.5" y="-219.8" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 5647</text>
+<text text-anchor="start" x="463.5" y="-204.8" font-family="Helvetica,sans-Serif" font-size="14.00">value = 6990.67</text>
 </g>
 <!-- 0&#45;&gt;2 -->
 <g id="edge4" class="edge">
 <title>0&#45;&gt;2</title>
-<path fill="none" stroke="black" d="M428.81,-394.92C446.46,-362.14 473.58,-311.79 492.88,-275.94"/>
-<polygon fill="black" stroke="black" points="495.72,-278.04 497.38,-267.57 489.56,-274.72 495.72,-278.04"/>
-<text text-anchor="middle" x="505.28" y="-286.49" font-family="Helvetica,sans-Serif" font-size="14.00">False</text>
+<path fill="none" stroke="black" d="M428.05,-391.82C445.55,-359.65 472.21,-310.66 491.39,-275.4"/>
+<polygon fill="black" stroke="black" points="494.41,-277.18 496.11,-266.72 488.26,-273.83 494.41,-277.18"/>
+<text text-anchor="middle" x="503.91" y="-285.67" font-family="Helvetica,sans-Serif" font-size="14.00">False</text>
 </g>
 <!-- 3 -->
 <g id="node3" class="node">
 <title>3</title>
 <path fill="#ffffff" stroke="black" d="M180,-76.5C180,-76.5 12,-76.5 12,-76.5 6,-76.5 0,-70.5 0,-64.5 0,-64.5 0,-35.5 0,-35.5 0,-29.5 6,-23.5 12,-23.5 12,-23.5 180,-23.5 180,-23.5 186,-23.5 192,-29.5 192,-35.5 192,-35.5 192,-64.5 192,-64.5 192,-70.5 186,-76.5 180,-76.5"/>
-<text text-anchor="start" x="8" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 493280.52</text>
-<text text-anchor="start" x="44.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 1995</text>
-<text text-anchor="start" x="44.5" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 4140.09</text>
+<text text-anchor="start" x="8" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 611797.91</text>
+<text text-anchor="start" x="44.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 1978</text>
+<text text-anchor="start" x="44.5" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 4102.16</text>
 </g>
 <!-- 1&#45;&gt;3 -->
 <g id="edge2" class="edge">
 <title>1&#45;&gt;3</title>
-<path fill="none" stroke="black" d="M266.99,-197.57C229.33,-165.28 172.61,-116.67 134.96,-84.39"/>
-<polygon fill="black" stroke="black" points="137.31,-81.8 127.44,-77.95 132.76,-87.12 137.31,-81.8"/>
+<path fill="none" stroke="black" d="M266.18,-196.75C228.69,-164.65 172.25,-116.3 134.78,-84.21"/>
+<polygon fill="black" stroke="black" points="137.17,-81.65 127.3,-77.81 132.62,-86.97 137.17,-81.65"/>
 </g>
 <!-- 4 -->
 <g id="node4" class="node">
 <title>4</title>
 <path fill="#f4c9aa" stroke="black" d="M390,-76.5C390,-76.5 222,-76.5 222,-76.5 216,-76.5 210,-70.5 210,-64.5 210,-64.5 210,-35.5 210,-35.5 210,-29.5 216,-23.5 222,-23.5 222,-23.5 390,-23.5 390,-23.5 396,-23.5 402,-29.5 402,-35.5 402,-35.5 402,-64.5 402,-64.5 402,-70.5 396,-76.5 390,-76.5"/>
-<text text-anchor="start" x="218" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 453482.55</text>
-<text text-anchor="start" x="254.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 2978</text>
-<text text-anchor="start" x="254.5" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 5572.64</text>
+<text text-anchor="start" x="218" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 438795.71</text>
+<text text-anchor="start" x="254.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 3077</text>
+<text text-anchor="start" x="254.5" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 5552.48</text>
 </g>
 <!-- 1&#45;&gt;4 -->
 <g id="edge3" class="edge">
 <title>1&#45;&gt;4</title>
-<path fill="none" stroke="black" d="M306,-197.57C306,-166.51 306,-120.33 306,-88.14"/>
-<polygon fill="black" stroke="black" points="309.5,-88.48 306,-78.48 302.5,-88.48 309.5,-88.48"/>
+<path fill="none" stroke="black" d="M305.19,-196.75C305.36,-165.87 305.61,-119.95 305.79,-87.93"/>
+<polygon fill="black" stroke="black" points="309.29,-88.35 305.85,-78.33 302.29,-88.32 309.29,-88.35"/>
 </g>
 <!-- 5 -->
 <g id="node6" class="node">
 <title>5</title>
-<path fill="#eda673" stroke="black" d="M600,-76.5C600,-76.5 432,-76.5 432,-76.5 426,-76.5 420,-70.5 420,-64.5 420,-64.5 420,-35.5 420,-35.5 420,-29.5 426,-23.5 432,-23.5 432,-23.5 600,-23.5 600,-23.5 606,-23.5 612,-29.5 612,-35.5 612,-35.5 612,-64.5 612,-64.5 612,-70.5 606,-76.5 600,-76.5"/>
-<text text-anchor="start" x="428" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 390369.94</text>
-<text text-anchor="start" x="464.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 3007</text>
-<text text-anchor="start" x="464.5" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 6504.89</text>
+<path fill="#eca470" stroke="black" d="M594,-76.5C594,-76.5 434,-76.5 434,-76.5 428,-76.5 422,-70.5 422,-64.5 422,-64.5 422,-35.5 422,-35.5 422,-29.5 428,-23.5 434,-23.5 434,-23.5 594,-23.5 594,-23.5 600,-23.5 606,-29.5 606,-35.5 606,-35.5 606,-64.5 606,-64.5 606,-70.5 600,-76.5 594,-76.5"/>
+<text text-anchor="start" x="430" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 399456.8</text>
+<text text-anchor="start" x="462.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 2948</text>
+<text text-anchor="start" x="462.5" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 6544.02</text>
 </g>
 <!-- 2&#45;&gt;5 -->
 <g id="edge5" class="edge">
 <title>2&#45;&gt;5</title>
-<path fill="none" stroke="black" d="M516,-197.57C516,-166.51 516,-120.33 516,-88.14"/>
-<polygon fill="black" stroke="black" points="519.5,-88.48 516,-78.48 512.5,-88.48 519.5,-88.48"/>
+<path fill="none" stroke="black" d="M514.81,-196.75C514.64,-165.87 514.39,-119.95 514.21,-87.93"/>
+<polygon fill="black" stroke="black" points="517.71,-88.32 514.15,-78.33 510.71,-88.35 517.71,-88.32"/>
 </g>
 <!-- 6 -->
 <g id="node7" class="node">
 <title>6</title>
-<path fill="#e58139" stroke="black" d="M810,-76.5C810,-76.5 642,-76.5 642,-76.5 636,-76.5 630,-70.5 630,-64.5 630,-64.5 630,-35.5 630,-35.5 630,-29.5 636,-23.5 642,-23.5 642,-23.5 810,-23.5 810,-23.5 816,-23.5 822,-29.5 822,-35.5 822,-35.5 822,-64.5 822,-64.5 822,-70.5 816,-76.5 810,-76.5"/>
-<text text-anchor="start" x="638" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 406663.99</text>
-<text text-anchor="start" x="674.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 2722</text>
-<text text-anchor="start" x="679" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 7480.3</text>
+<path fill="#e58139" stroke="black" d="M804,-76.5C804,-76.5 636,-76.5 636,-76.5 630,-76.5 624,-70.5 624,-64.5 624,-64.5 624,-35.5 624,-35.5 624,-29.5 630,-23.5 636,-23.5 636,-23.5 804,-23.5 804,-23.5 810,-23.5 816,-29.5 816,-35.5 816,-35.5 816,-64.5 816,-64.5 816,-70.5 810,-76.5 804,-76.5"/>
+<text text-anchor="start" x="632" y="-61.3" font-family="Helvetica,sans-Serif" font-size="14.00">squared_error = 412428.17</text>
+<text text-anchor="start" x="668.5" y="-46.3" font-family="Helvetica,sans-Serif" font-size="14.00">samples = 2699</text>
+<text text-anchor="start" x="668.5" y="-31.3" font-family="Helvetica,sans-Serif" font-size="14.00">value = 7478.53</text>
 </g>
 <!-- 2&#45;&gt;6 -->
 <g id="edge6" class="edge">
 <title>2&#45;&gt;6</title>
-<path fill="none" stroke="black" d="M555.01,-197.57C592.67,-165.28 649.39,-116.67 687.04,-84.39"/>
-<polygon fill="black" stroke="black" points="689.24,-87.12 694.56,-77.95 684.69,-81.8 689.24,-87.12"/>
+<path fill="none" stroke="black" d="M553.08,-196.75C589.85,-164.65 645.21,-116.3 681.97,-84.21"/>
+<polygon fill="black" stroke="black" points="684.06,-87.03 689.29,-77.82 679.45,-81.76 684.06,-87.03"/>
 </g>
 </g>
 </svg>
