@@ -5,6 +5,8 @@ draft: false
 format: hugo-md
 jupyter: python3
 ---
+When you get your own OS-specific errors you have to start wondering whether the mere act of programming on Windows is a mistake.
+
 ```
 An attempt has been made to start a new process before the
 current process has finished its bootstrapping phase.
@@ -20,8 +22,7 @@ in the main module:
 The "freeze_support()" line can be omitted if the program
 is not going to be frozen to produce an executable.
 ```
-
-When you get your own OS-specific errors you have to start wondering whether the mere act of programming on Windows is a mistake. This error snippet comes from Pytorch's implementation of multiprocessing and can show up during execution even when your code doesn't explicitly do any--simply specifying a paramter such as `num_workers` is an implicit use of the feature and invites its caveats. The warning refers to the use of `fork` and starting subprocesses, but the choice of using it is not explicit either and simply is a consequence of what OS your machine is running.
+ This error snippet comes from Pytorch's implementation of multiprocessing and can show up during execution even when your code doesn't explicitly do any--simply specifying a paramter such as `num_workers` is an implicit use of the feature and invites its caveats. The warning refers to the use of `fork` and starting subprocesses, but the choice of using it is not explicit either and simply is a consequence of what OS your machine is running.
 
 According to the PyTorch docs:
 > Since workers rely on Python multiprocessing, worker launch behavior is different on Windows compared to Unix.
