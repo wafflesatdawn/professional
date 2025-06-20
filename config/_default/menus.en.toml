@@ -16,8 +16,8 @@
   weight = 10
 
 [[main]]
-    name = "Resume"
-    pageRef = "resume"
+    name = "About"
+    pageRef = "about"
 
 #[[main]]
 #  name = "Parent"

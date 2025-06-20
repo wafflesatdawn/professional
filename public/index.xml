@@ -6,7 +6,7 @@
     <description>Recent content on luminal transubstantiation</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
-    <copyright>© 2023 Tony Tran</copyright>
+    <copyright>© 2025 Tony Tran</copyright>
     <lastBuildDate>Wed, 05 Jul 2023 15:18:27 -0700</lastBuildDate><atom:link href="https://wafflesatdawn.github.io/professional/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Asking About Sand Dabs</title>
@@ -70,11 +70,11 @@
     
     <item>
       <title>Tony Tran</title>
-      <link>https://wafflesatdawn.github.io/professional/resume/</link>
+      <link>https://wafflesatdawn.github.io/professional/about/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
-      <guid>https://wafflesatdawn.github.io/professional/resume/</guid>
-      <description>Summary # Experienced data engineer: 9yrs Python &amp;amp; SQL, 3yrs Javascript.</description>
+      <guid>https://wafflesatdawn.github.io/professional/about/</guid>
+      <description>This is a small blog testing out static site generation using Hugo</description>
       
     </item>
     
